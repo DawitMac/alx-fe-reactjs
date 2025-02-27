@@ -5,10 +5,12 @@ import About from './About';
 import Services from './Services';
 import Contact from './Contact';
 import './App.css';
+import Navbar from './components/Navbar';
 
 const App = () => {
   return (
     <>
+       <Navbar />
        <Router>
         <Routes>
           <Route path="/" element={<Home />} />
