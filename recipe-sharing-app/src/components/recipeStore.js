@@ -10,7 +10,7 @@ import { create } from "zustand";
   deleteRecipe: (id) => {
     set((state) => ({ recipes: state.recipes.filter((recipe) => recipe.id !== id) }))
   },
-  editRecipe : (id, updatedRecipe) => {
+  updateRecipe : (id, updatedRecipe) => {
     set((state) => ({
       recipes: state.recipes.map((recipe) => {
         if (recipe.id === id) {
