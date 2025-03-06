@@ -1,5 +1,6 @@
 import { useState } from 'react';
-  import { useRecipeStore } from './recipeStore';
+import  useRecipeStore  from '../store/recipeStore';
+import { useNavigate } from 'react-router-dom';
 
    const AddRecipeForm = () => {
     const addRecipe = useRecipeStore(state => state.addRecipe);
@@ -14,20 +15,26 @@ import { useState } from 'react';
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <div className='flex flex-col space-y-4 justify-center items-center width-full my-auto'>
+      <h2>Add Recipe</h2>
+              <form onSubmit={handleSubmit} className='flex flex-col space-y-4 justify-center items-start my-auto'>
+        <h2>Add Recipe</h2>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
+          className='border border-gray-400 p-2'
         />
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
+          className='border border-gray-400 p-2'
         />
-        <button type="submit">Add Recipe</button>
+        <button type="submit" className='px-4 py-2 flex items-center justify-center border-none bg-sky-500 text-white text-md font-bold'>Add Recipe</button>
       </form>
+      </div>
     );
   };
 
