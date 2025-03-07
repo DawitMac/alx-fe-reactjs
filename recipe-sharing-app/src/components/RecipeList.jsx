@@ -4,12 +4,11 @@ import useRecipeStore from "./recipeStore";
 import RecipeDetails from "./RecipeDetails";
 
   const RecipeList = () => {
-    const recipes = useRecipeStore(state => state.recipes);
-
+    const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
+  console.log("filteredRecipes", filteredRecipes , typeof(filteredRecipes))
     return (
       <div>
-       
-        {recipes.map(recipe => (
+        {filteredRecipes.map(recipe => (
           <RecipeDetails key={recipe.id} recipeId={recipe.id} />
         ))}
 
