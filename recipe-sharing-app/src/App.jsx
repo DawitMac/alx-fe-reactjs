@@ -5,6 +5,8 @@ import RecipeList from './components/RecipeList'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import EditRecipeForm from './components/EditRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
+import FavoritesList from './components/FavoritesList'
+import RecommendationsList from './components/RecommendationsList'
 
 const App = () => {
   return (
@@ -18,9 +20,10 @@ const App = () => {
         <Route path='/' element={<RecipeList />} />
         <Route path='/edit' element={<EditRecipeForm />}  />
         <Route path='/detail' element={<RecipeDetails />} />
-
       </Routes>
     </BrowserRouter>
+    <FavoritesList />
+    <RecommendationsList />
     </div>
   )
 }
