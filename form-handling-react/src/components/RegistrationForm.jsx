@@ -1,23 +1,16 @@
 import React, { useState } from "react";
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.username) newErrors.username = "Username is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -26,8 +19,10 @@ function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      setFormData({ username: "", email: "", password: "" }); // Reset form on success
+      console.log("Form submitted:", { username, email, password });
+      setUsername("");
+      setEmail("");
+      setPassword("");
       setErrors({});
     }
   };
@@ -41,8 +36,8 @@ function RegistrationForm() {
           <input
             type="text"
             name="username"
-            value={formData.username}
-            onChange={handleChange}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full p-2 border rounded"
           />
           {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
@@ -53,8 +48,8 @@ function RegistrationForm() {
           <input
             type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 border rounded"
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
@@ -65,8 +60,8 @@ function RegistrationForm() {
           <input
             type="password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 border rounded"
           />
           {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
