@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
-import Post from './components/Post';
 import ProtectedRoute from './components/ProtectedRoute';
+import BlogPost from './components/BlogPost';
 // import ProfileDetails from './components/ProfileDetails';
 // import ProfileSettings from './components/ProfileSettings';
 
@@ -17,7 +17,7 @@ function App() {
                         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}>
                            
                         </Route>
-                        <Route path="/post/:postId" element={<Post />} />
+                        <Route path="/blog/:id" element={<BlogPost />} />
                     </Routes>
                 </BrowserRouter>
     );
