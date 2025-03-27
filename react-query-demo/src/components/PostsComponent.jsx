@@ -14,7 +14,7 @@ const PostsComponent = () => {
         queryKey: ['posts'], // Cache key
         queryFn: fetchPosts,
         staleTime: 5 * 60 * 1000, // 5 minutes
-        catchTime : 10 * 60 * 1000, // 10 minutes
+        cacheTime : 10 * 60 * 1000, // 10 minutes
         refetchOnWindowFocus: true,
         keepPreviousData : true
     });
