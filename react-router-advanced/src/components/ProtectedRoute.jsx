@@ -1,11 +1,14 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({children}) => {
-    const isAuthenticated = false;
+  const isAuthenticated = () => {
+    // Replace with your authentication logic, for instance checking if a token exists in local storage
+    return localStorage.getItem('authToken') !== null;
+};
 
     
-  return isAuthenticated ? children : <Navigate to="/" />;
+  return isAuthenticated ? children : <Redirect to="/login" />;
 }
 
 export default ProtectedRoute
