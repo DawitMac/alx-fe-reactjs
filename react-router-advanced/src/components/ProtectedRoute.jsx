@@ -1,14 +1,12 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 const ProtectedRoute = ({children}) => {
-  const isAuthenticated = () => {
-    // Replace with your authentication logic, for instance checking if a token exists in local storage
-    return localStorage.getItem('authToken') !== null;
-};
+  const { isAuthenticated } = useAuth();
 
     
-  return isAuthenticated ? children : <Redirect to="/login" />;
+  return isAuthenticated ? children : <Navigate to="/" />;
 }
 
 export default ProtectedRoute
