@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import recipesData from '../data.json'; // Adjust the path as necessary
 import { Link } from 'react-router-dom';
+import AddRecipeForm from './AddRecipeForm';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -27,6 +28,7 @@ const HomePage = () => {
           
         ))}
       </div>
+      <AddRecipeForm />
     </div>
   );
 };
