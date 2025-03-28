@@ -1,10 +1,10 @@
 import React from 'react'
-import Home from './components/Home'
+import HomePage from './components/HomePage'
 
 const App = () => {
   return (
     <div className='bg-gray-100 min-h-screen flex items-center justify-center'>
-      <Home />
+      <HomePage />
     </div>
   )
 }
