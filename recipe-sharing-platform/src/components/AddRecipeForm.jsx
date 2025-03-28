@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [steps, setSteps] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -11,7 +11,7 @@ const AddRecipeForm = () => {
     setError('');
 
     // Basic validation
-    if (!title || !ingredients || !instructions) {
+    if (!title || !ingredients || !steps) {
       setError('All fields are required.');
       return;
     }
@@ -23,11 +23,18 @@ const AddRecipeForm = () => {
     }
 
     // Here you would typically handle the form submission (e.g., send data to an API)
-    console.log('Submitting:', { title, ingredients: ingredientList, instructions });
+    const newRecipe = {
+      title,
+      ingredients: ingredientList,
+      steps: steps.split('\n').filter(Boolean), // Split steps by newline
+    };
+    
+    console.log('Submitting:', newRecipe);
+    
     // Clear the form
     setTitle('');
     setIngredients('');
-    setInstructions('');
+    setSteps('');
   };
 
   return (
@@ -65,13 +72,13 @@ const AddRecipeForm = () => {
         </div>
         
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="instructions">
-            Preparation Steps
+          <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="steps">
+            Preparation Steps (one per line)
           </label>
           <textarea
-            id="instructions"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            id="steps"
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
             rows="4"
             className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
