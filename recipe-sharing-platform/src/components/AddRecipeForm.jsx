@@ -48,7 +48,7 @@ const AddRecipeForm = () => {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 sm:px-10 md:px-16 lg:px-20">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Add a New Recipe</h1>
       <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6">
         {errors.title && <p className="text-red-500 text-center mb-2">{errors.title}</p>}
