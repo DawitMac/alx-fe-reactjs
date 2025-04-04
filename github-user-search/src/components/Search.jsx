@@ -26,9 +26,8 @@ const Search = () => {
       const data = await fetchUserData({ username, location, minRepos });
       setUser(data);
       setUserData(data); // Save user data for display
-    } catch (error) {
-      console.error(error);
-      setError("Looks like we can't find the user"); // Set error message
+    } catch {
+      setError("Looks like we can't find the user"); // Set the error message
     } finally {
       setLoading(false);
       setUsername(""); // Reset input fields
