@@ -28,7 +28,7 @@ const Search = () => {
       setUserData(data); // Save user data for display
     } catch (error) {
       console.error(error);
-      setError("Looks like we can't find the user");
+      setError("Looks like we can't find the user"); // Set error message
     } finally {
       setLoading(false);
       setUsername(""); // Reset input fields
@@ -68,7 +68,7 @@ const Search = () => {
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
       {userData && (
         <div className="mt-6">
           <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="w-16 h-16 rounded-full" />
