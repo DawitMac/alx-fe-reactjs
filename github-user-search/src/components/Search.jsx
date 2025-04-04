@@ -10,7 +10,7 @@ const Search = () => {
   const [minRepos, setMinRepos] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [users, setUsers] = useState([]); // Array to hold user data
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,10 +24,10 @@ const Search = () => {
 
     try {
       const data = await fetchUserData({ username, location, minRepos });
-      setUser(data);
-      setUserData(data); // Save user data for display
+      setUsers([data]); // Store the fetched user data in an array
+      setUser(data); // Assuming setUser is used for a single user
     } catch {
-      setError("Looks like we cant find the user"); // Set the error message
+      setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
       setUsername(""); // Reset input fields
@@ -68,12 +68,14 @@ const Search = () => {
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
-      {userData && (
-        <div className="mt-6">
-          <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="w-16 h-16 rounded-full" />
-          <p>Username: {userData.login}</p>
-        </div>
-      )}
+      <div className="mt-6">
+        {users.map((user) => ( // Use map to display user information
+          <div key={user.id} className="flex items-center space-x-4">
+            <img src={user.avatar_url} alt={`${user.login}'s avatar`} className="w-16 h-16 rounded-full" />
+            <p>Username: {user.login}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
