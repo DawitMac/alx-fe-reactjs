@@ -7,7 +7,7 @@ const Search = () => {
 
     const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
-  const [minRepos, setMinRepos] = useState('');
+  const [minRepos, setMinRepos] = useState(0);
 
     const handleSubmit = async(e) => {
       e.preventDefault()
@@ -54,7 +54,7 @@ const Search = () => {
         type="number"
         placeholder="Minimum Repositories"
         value={minRepos}
-        onChange={(e) => setMinRepos(e.target.value)}
+        onChange={(e) => setMinRepos(Number(e.target.value))}
         className="border border-gray-300 p-2 rounded"
       />
       <button type="submit" className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
