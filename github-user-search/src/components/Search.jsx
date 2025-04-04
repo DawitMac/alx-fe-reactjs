@@ -27,7 +27,7 @@ const Search = () => {
       setUser(data);
       setUserData(data); // Save user data for display
     } catch {
-      setError("Looks like we can't find the user"); // Set the error message
+      setError("Looks like we cant find the user"); // Set the error message
     } finally {
       setLoading(false);
       setUsername(""); // Reset input fields
