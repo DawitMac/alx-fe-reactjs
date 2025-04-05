@@ -24,8 +24,8 @@ const Search = () => {
 
     try {
       const data = await fetchUserData({ username, location, minRepos });
-      setUsers([data]); // Store the fetched user data in an array
-      setUser(data); // Assuming setUser is used for a single user
+      setUsers(data.items || []); // Store the fetched user data
+      setUser(data.items[0]); // Assuming you want to set the first user as the current user
     } catch {
       setError("Looks like we can't find the user");
     } finally {
@@ -72,7 +72,9 @@ const Search = () => {
         {users.map((user) => ( // Use map to display user information
           <div key={user.id} className="flex items-center space-x-4">
             <img src={user.avatar_url} alt={`${user.login}'s avatar`} className="w-16 h-16 rounded-full" />
-            <p>Username: {user.login}</p>
+            <div>
+              <p>Username: <a href={user.html_url} target="_blank" rel="noopener noreferrer">{user.login}</a></p>
+            </div>
           </div>
         ))}
       </div>
